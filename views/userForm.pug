@@ -1,0 +1,41 @@
+mixin userForm(user={})
+  form(action="/add" method="POST" class="card")
+    br
+    br
+    label(for="name") Name
+    br
+    input(type="text" name="name")
+    br
+    br
+    label(for="age") Age
+    br
+    input(type="number" name="age")
+    br
+    br
+    label(for="city") City
+    br
+    input(type="text" name="city")
+    br
+    br
+    label(for="state") State
+    br
+    input(type="text" name="state")
+    br
+    br
+    label(for="email") Email
+    br
+    input(type="text" name="email")
+    br
+    br
+    input(type="submit" value="save" class="button")
+    br
+    br
+    input(type="submit" value="addUser" class="button")
+    br
+    br
+    input(type="submit" value="editUser" class="button")
+    br
+    br
+    input(type="submit" value="deleteUser" class="button")
+
+    

@@ -1,17 +1,16 @@
 const mongoose = require('mongoose');
 // mongoose.Promise=global.Promise;
 const port=8008;
-const userController=require("./userController");
 
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
 mongoose.connect('mongodb://localhost:27017/qliktagInterns1',  { useNewUrlParser: true }, (err) =>
 {
   if (!err) 
   {
-      console.log("Success")
+      console.log("Success");
   }
   else{
-    console.log("Error in conection")
+    console.log("Error in conection");
   }
   
 });
@@ -23,3 +22,4 @@ const app = require('./app');
 const server = app.listen(8008, () => {
   console.log(`Express running → PORT ${server.address().port}`);
 });
+
