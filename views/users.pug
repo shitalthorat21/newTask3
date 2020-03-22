@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+  body  
+   table(style='width:100%' border='1')     
+      tr
+        th NAME
+        th AGE
+        th CITY
+        th STATE
+        th EMAIL
+        th       
+
+      #each users
+       tr
+          td= this.name  
+          td= this.age
+          td= this.city
+          td= this.state
+          td= this.email 
+          td
+             <button class="btn btn-info btn-lg" type="button">Edit</button>
+             <button class="btn btn-info btn-lg" type="button">Delete</button>
+            
+          
+             
