@@ -1,5 +1,6 @@
 mixin userForm(user={})
   form(action="/add" method="POST" class="card")
+    input(type="hidden" name="email" value="users.email")
     br
     br
     label(for="name") Name

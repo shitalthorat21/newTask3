@@ -21,23 +21,30 @@ router.get('/users', (req,res)=>{
     });
 });
 
-router.put("/:email", function (req,res)
+router.put("users/:id", (req,res,next)=>
 {
-    let email=req.params.email;
-    var data={
-        name:req.body.name,
-        age:req.body.age,
-        city:req.body.city,
-        state:req.body.state,
-    }
-        User.findByEmail(email, data, function (err,doc){
-        if(!err){
-            res.render("add", {
-                viewTitle:"Update User",
-                users:doc
+    User.findOneAndUpdate({email:req.params.email}, 
+        {
+            $set:{
+            name:req.body.name,
+            age:req.body.age,
+            city:req.body.city,
+          state:req.body.state
+    
+            }
+        },
+            (err,result)=>
+            {
+                if(err)
+                {
+                    res.json(result);
+                }
+                else
+                {
+                    res.json({msg:"Updated"});
+                }
             });
-        }
-    });
+    
 });
 
 router.delete('/:email', function(req, res) {
