@@ -21,7 +21,7 @@ router.get('/users', (req,res)=>{
     });
 });
 
-router.get("/:email", function (req,res)
+router.put("/:email", function (req,res)
 {
     let email=req.params.email;
     var data={
@@ -40,10 +40,10 @@ router.get("/:email", function (req,res)
     });
 });
 
-router.get('/:email', function(req, res) {
+router.delete('/:email', function(req, res) {
 	console.log(req.params.email);
 	let email = req.params.email;
-	User.findByEmail(req.params.email, function(err,doc){	
+	User.remove({email:email}, function(err,doc){	
 	
 		if (!err)
 			res.redirect("users");
