@@ -4,10 +4,22 @@ const router = express.Router();
 const userController=require('./userController');
 const User=mongoose.model('User');
 
+//add user page
 router.get('/add', userController.addUser);
-router.post('/add', userController.addUserpost);
 
 
+router.post('/add', (req,res)=>{
+    if(req.body.email)
+    {
+        addUserpost(req,res);
+    }
+    else
+    {
+        updateUserpost(req,res);
+    }
+});
+
+//fetch data from databse
 router.get('/users', (req,res)=>{
     User.find((err,docs)=>{
         if(!err){
@@ -21,45 +33,45 @@ router.get('/users', (req,res)=>{
     });
 });
 
-router.put("users/:id", (req,res,next)=>
+//edit operation
+router.get("/:email", (req,res)=>
 {
-    User.findOneAndUpdate({email:req.params.email}, 
-        {
-            $set:{
-            name:req.body.name,
-            age:req.body.age,
-            city:req.body.city,
-          state:req.body.state
-    
-            }
-        },
-            (err,result)=>
-            {
-                if(err)
-                {
-                    res.json(result);
-                }
-                else
-                {
-                    res.json({msg:"Updated"});
-                }
-            });
+    User.findOne(req.params.email,(err,doc)=>{
+        if(!err){
+            res.render("/add",({viewTitle:"Update User",users:doc}))
+        }
+    })
     
 });
 
-router.delete('/:email', function(req, res) {
-	console.log(req.params.email);
-	let email = req.params.email;
-	User.remove({email:email}, function(err,doc){	
-	
-		if (!err)
-			res.redirect("users");
-		else
-            res.send('Error');
-    	
-	});
+//delete operation
+router.get("/delete/:email", (req,res)=>
+{
+    User.findOneAndRemove(req.params.email,(err,doc)=>{
+        if(!err){
+            res.render("users");
+        }
+        else{
+            console.log("Error during delete");
+        }
+    })
+    
 });
 
+
+//update function
+function updateUserpost(req,res)
+{
+    User.findOneAndUpdate({email:req.body.email}, req.body,{new:true},(err,doc)=>
+    {
+        if(!err){
+            res.redirect("users");
+        }
+        else{
+            console.log("error occured in updating")
+        }
+    })
+}
 
 
 module.exports = router;
