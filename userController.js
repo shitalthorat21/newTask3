@@ -7,9 +7,8 @@ const User=mongoose.model('User');
 exports.addUser=(req,res)=>{
     res.render("add",{title:"AddUser"});
 }
-
 //save data into database
-exports.addUserpost=(req,res)=>{
+exports.addUserPost=(req,res)=>{
     var user=new User();
     user.name=req.body.name;
     user.age=req.body.age;

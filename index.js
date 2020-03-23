@@ -6,6 +6,8 @@ const User=mongoose.model('User');
 
 //add user page
 router.get('/add', userController.addUser);
+router.post("/add",userController.addUserpost);
+
 
 
 router.post('/add', (req,res)=>{
@@ -45,9 +47,9 @@ router.get("/:email", (req,res)=>
 });
 
 //delete operation
-router.get("/delete/:email", (req,res)=>
+router.delete("/delete/:email", (req,res,next)=>
 {
-    User.findOneAndRemove(req.params.email,(err,doc)=>{
+    User.remove({email:req.params.email},(err,doc)=>{
         if(!err){
             res.render("users");
         }
