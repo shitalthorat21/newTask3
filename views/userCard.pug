@@ -1,0 +1,8 @@
+mixin userCard(user={})
+ .user
+   .user__actions
+     .user__action.user__action--edit
+       a(href=`/users/${user.email}/edit`)
+         button Edit
+         h2.title
+          a(href=`/user/${user.email}`)

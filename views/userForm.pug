@@ -1,31 +1,31 @@
 mixin userForm(user={})
-  form(action="/add" method="POST" class="card")
-    input(type="hidden" name="email" value="users.email")
+  form(action=`/add/${user.email || ''}` method="POST" class="card")
+    //- input(type="hidden" name="email" value="users.email")
     br
     br
     label(for="name") Name
     br
-    input(type="text" name="name")
+    input(type="text" name="name" value=user.name)
     br
     br
     label(for="age") Age
     br
-    input(type="number" name="age")
+    input(type="number" name="age" value=user.age)
     br
     br
     label(for="city") City
     br
-    input(type="text" name="city")
+    input(type="text" name="city" value=user.city)
     br
     br
     label(for="state") State
     br
-    input(type="text" name="state")
+    input(type="text" name="state" value=user.state)
     br
     br
     label(for="email") Email
     br
-    input(type="text" name="email")
+    input(type="text" name="email" value=user.email)
     br
     br
     input(type="submit" value="AddUser" class="button")

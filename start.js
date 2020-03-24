@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// mongoose.Promise=global.Promise;
+mongoose.Promise=global.Promise;
 const port=8008;
 
 // const MongoClient = require('mongodb').MongoClient;

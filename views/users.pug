@@ -1,3 +1,4 @@
+include userCard
 doctype html
 html(lang='en')
   body  
@@ -10,16 +11,17 @@ html(lang='en')
         th EMAIL
         th       
 
-      each a in users
+      each user in users
        tr
-          td= a.name  
-          td= a.age
-          td= a.city
-          td= a.state
-          td= a.email 
+          td= user.name  
+          td= user.age
+          td= user.city
+          td= user.state
+          td= user.email 
           td
-             <a href="/a.email"><button class="btn btn-info btn-lg" type="button">Edit</button>
-             <a href="/delete/a.email"><button class="btn btn-info btn-lg" type="button">Delete</button>
+            +userCard()
+            //-  <a href="/user.email"><button class="btn btn-info btn-lg" type="button">Edit</button>
+             <a href="/delete/user.email"><button class="btn btn-info btn-lg" type="button">Delete</button>
             
           
              
