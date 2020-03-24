@@ -6,3 +6,8 @@ mixin userCard(user={})
          button Edit
          h2.title
           a(href=`/user/${user.email}`)
+     .user__action.user__action--delete     
+       a(href=`/users/${user.email}/delete`)
+         button Delete
+         h2.title
+          a(href=`/user/${user.email}`)

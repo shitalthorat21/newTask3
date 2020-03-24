@@ -9,45 +9,11 @@ router.get('/', catchErrors(userController.getUsers));
 router.get('/users', catchErrors(userController.getUsers));
 router.get('/add', userController.addUser);
 router.post('/add', catchErrors(userController.createUser));
+router.post('/add/:email', catchErrors(userController.updateUser));
 router.get('/users/:email/edit',catchErrors(userController.editUser));
+router.get('/users/:email/delete',userController.deleteUser);
 
-// router.post("/add",userController.addUserpost);
 
-// router.post('/add', (req,res)=>{
-//     if(req.body.email)
-//     {
-//         addUserpost(req,res);
-//     }
-//     else
-//     {
-//         updateUserpost(req,res);
-//     }
-// });
-
-// //fetch data from databse
-// router.get('/users', (req,res)=>{
-//     User.find((err,docs)=>{
-//         if(!err){
-//             res.render("users",{
-//                 users:docs
-//             });
-//         }
-//         else{
-//             console.log("Error in users");
-//         }
-//     });
-// });
-
-// //edit operation
-// router.get("/:email", (req,res)=>
-// {
-//     User.findOne({email:req.params.email},(err,doc)=>{
-//         if(!err){
-//             res.render("/add",({viewTitle:"Update User",users:doc}))
-//         }
-//     })
-    
-// });
 
 // //delete operation
 // router.delete("/delete/:email", (req,res,next)=>
@@ -64,19 +30,6 @@ router.get('/users/:email/edit',catchErrors(userController.editUser));
 // });
 
 
-// //update function
-// function updateUserpost(req,res)
-// {
-//     User.findOneAndUpdate({email:req.body.email}, req.body,{new:true},(err,doc)=>
-//     {
-//         if(!err){
-//             res.redirect("users");
-//         }
-//         else{
-//             console.log("error occured in updating")
-//         }
-//     })
-// }
 
 
 module.exports = router;
