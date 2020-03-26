@@ -2,12 +2,12 @@ mixin userCard(user={})
  .user
    .user__actions
      .user__action.user__action--edit
-       a(href=`/users/${user.email}/edit`)
+       a(href=`/users/${user.emailId}/edit`)
          button Edit
          h2.title
-          a(href=`/user/${user.email}`)
+          a(href=`/user/${user.emailId}`)
      .user__action.user__action--delete     
        a(href=`/users/${user.email}/delete`)
          button Delete
          h2.title
-          a(href=`/user/${user.email}`)
+          a(href=`/user/${user.emailId}`)

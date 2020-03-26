@@ -8,7 +8,7 @@ html(lang='en')
         th AGE
         th CITY
         th STATE
-        th EMAIL
+        th EMAILID
         th       
 
       each user in users
@@ -17,7 +17,7 @@ html(lang='en')
           td= user.age
           td= user.city
           td= user.state
-          td= user.email 
+          td= user.emailId 
           td
             +userCard()
             //-  <a href="/user.email"><button class="btn btn-info btn-lg" type="button">Edit</button>

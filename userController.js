@@ -21,18 +21,18 @@ exports.getUsers=async (req,res)=>{
 }
 
 exports.editUser=async(req,res)=>{
-    const user=await User.findOne({email:req.params.email});
-    res.render('editUser',{title:`Edit ${user.email}`,user});
+    const user=await User.findOne({emailId:req.params.emailId});
+    res.render('editUser',{title:`Edit ${user.emailId}`,user});
     // res.json(user);
 }
 
 exports.updateUser=async(req,res)=>{
-    const user=await User.findOneAndUpdate({email:req.body.email},req.body,{new:true}).exec();
-    res.redirect(`/users/${user.email}/edit`);
+    const user=await User.findOneAndUpdate({emailId:req.params.emailId},req.body,{new:true}).exec();
+    res.redirect(`/users/${user.emailId}/edit`);
 }
 exports.deleteUser=(req,res,next)=>
 {
-    User.remove({email:req.params.email},(err,doc)=>{
+    User.remove({emailId:req.params.emailId},(err,doc)=>{
         if(!err){
             res.render("users");
         }
