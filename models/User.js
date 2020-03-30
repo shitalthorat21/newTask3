@@ -17,8 +17,11 @@ let userSchema=new Schema({
     state:{
          type:String,
          },
-         emailId:{
+    emailId:{
             type:String,
+            unique:true,
+            lowercase:true,
+            trim:true
           }        
 });
 module.exports=mongoose.model('User',userSchema);
